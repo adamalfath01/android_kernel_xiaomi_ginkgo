@@ -151,6 +151,7 @@ void ion_buffer_destroy(struct ion_buffer *buffer);
 struct ion_device {
 	struct miscdevice dev;
 	struct plist_head heaps;
+	unsigned int heap_count;
 };
 
 /* refer to include/linux/pm.h */
