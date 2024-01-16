@@ -152,6 +152,7 @@ struct ion_device {
 	struct miscdevice dev;
 	struct plist_head heaps;
 	unsigned int heap_count;
+	struct rw_semaphore heap_rwsem;
 };
 
 /* refer to include/linux/pm.h */
@@ -274,7 +275,7 @@ struct ion_device *ion_device_create(void);
  * @dev:		the device
  * @heap:		the heap to add
  */
-void ion_add_heap(struct ion_device *idev, struct ion_heap *heap);
+void ion_device_add_heap(struct ion_device *idev, struct ion_heap *heap);
 
 /**
  * some helpers for common operations on buffers using the sg_table
